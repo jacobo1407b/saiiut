@@ -3,34 +3,20 @@ const router = express.Router();
 const {authPage} = require('../helpers/auth');
 
 //Admin viw
+router.get('/',(req,res)=>{
+  res.redirect('/index/alumnos/')
+})
 router.get("/index/admin/*", authPage,(req, res) => {
-  //res.cookie("data" , "hola mundo cokkie").render("pages/admin")
-  //aqui req.cookies
-  const {cookies} = req
-  const data = {
-    cookies,
-    role:"admin"
-  }
-  res.render("pages/admin",{data:JSON.stringify(data)})
+  res.render("pages/admin")
 });
 //Alumnos view
 router.get("/index/alumnos/*", (req, res) => {
-  const {cookies} = req
-  const data = {
-    cookies,
-    role:"admin"
-  }
-  res.render("pages/alumno",{data:JSON.stringify(data)});
+  res.render("pages/alumno");
 });
 
 //Maestros view
 router.get("/index/profesor/*", (req, res) => {
-  const {cookies} = req
-  const data = {
-    cookies,
-    role:"admin"
-  }
-  res.render("pages/profe",{data:JSON.stringify(data)});
+  res.render("pages/profe");
 });
 
 module.exports = router;
